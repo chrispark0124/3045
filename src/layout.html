@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/TR/xml-names/" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>지음</title>
+<meta name="author" content="" />
+<meta name="description" content="" />
+<meta name="keywords"  content="" />
+<meta name="Resource-type" content="" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width, target-densitydpi=medium-dpi">
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/main.css" />
+<script src="../assets/js/jquery-2.0.3.min.js" type="text/javascript"></script>
+<script src="../assets/js/slick.min.js" type="text/javascript"></script>
+<script src="../assets/js/common.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="wrap">
+    <section>
+        <header class="header">
+            <div class="topLinkWrap">
+                <div class="inner">
+                    <ul>
+                        <li><a href="#none" title="로그인">로그인</a></li>
+                        <li><a href="#none" title="회원가입">회원가입</a></li>
+                        <li><a href="#none" title="문의사항">문의사항</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="gnbWrap">
+                <div class="inner">
+                    <h1><a href="#none" title="홈으로"><img src="../assets/img/common/logo.png" alt="세무법인 지음" /></a></h1>
+                    <div class="navBtn">
+                        <a href="#none">
+                            <div class="m_line line_top"></div>
+                            <div class="m_line line_mid"></div>
+                            <div class="m_line line_bot"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="inner">
+                <div class="navWrap" id="navSide">
+                    <div class="navInner">
+                        <div class="nav">
+                            <a href="#none" title="EXPERTISE">EXPERTISE</a>
+                            <a href="#none" title="PROFESSIONALS">PROFESSIONALS</a>
+                            <a href="#none" title="INSIGHT">INSIGHT</a>
+                            <a href="#none" title="ABOUT">ABOUT</a>
+                        </div>
+                        <div class="btmLink">
+                            <ul>
+                                <li><a href="#none" title="위치안내">위치안내</a></li>
+                                <li><a href="#none" title="연락처">연락처</a></li>
+                                <li><a href="#none" title="인재채용">인재채용</a></li>
+                            </ul>
+                        </div>
+                        <h2><img src="../assets/img/common/nav-logo.png" alt="세무법인 지음" /></h2>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+    <section class="mainVisualWrap">
+        <p class="logo"><img src="../assets/img/main/visual-logo.png" alt="세무법인 지음" /></p>
+        <p class="visual-arrow"><i></i></p>
+        <ul class="mainVisual">
+            <li>세무법인 지음 visual</li>
+            <li>세무법인 지음 visual</li>
+            <li>세무법인 지음 visual</li>
+        </ul>
+    </section>
+    <section class="container">
+        container
+    </section>
+</div>
+
+</body>
+<script>
+$(document).ready(function () {
+  //메인배너 슬라이드
+  $('.mainVisual').slick({
+      slide: '.mainVisual > li',
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite : true,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      dots: false, 
+      fade: true,
+      arrows: false
+  })
+});
+</script>
+</html>
