@@ -1,0 +1,58 @@
+@charset "utf-8";
+@import 'mixin';
+
+
+.mainVisualWrap{
+    @include laptop_s{
+        .logo{
+            top: 35vh;
+        }
+        .visual-scroll{
+            bottom: 5%;
+        }
+        .slick-slider-dots{
+            bottom: 25vh;
+        }
+    }
+    @include tablet{
+        .logo{
+            background-size: 332px 92px;
+            width: 332px;
+            height: 92px;
+        }
+    }
+    @include mobile{
+        .logo{
+            background-size: 184px auto;
+            width: 184px;
+            height: 51px;
+            top: 38%;
+        }
+        .visual-scroll{
+            bottom: 10%;
+            padding-top: 37px;
+            font-size: 10px;
+            background: url(../img/main/visual-scroll-arrow-mo.png) no-repeat center 0;
+        }
+        .slick-slider-dots{
+            bottom: 35%;
+        }
+    }
+	@media screen and (max-height: 350px){
+        .logo{
+            background-size: 184px auto;
+            width: 184px;
+            height: 51px;
+            top: 38%;
+        }
+        .visual-scroll{
+            bottom: 10%;
+            padding-top: 37px;
+            font-size: 10px;
+            background: url(../img/main/visual-scroll-arrow-mo.png) no-repeat center 0;
+        }
+        .slick-slider-dots{
+            bottom: 35%;
+        }
+    }
+}

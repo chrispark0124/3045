@@ -1,0 +1,826 @@
+@charset "utf-8";
+@import 'mixin';
+
+html{
+    &::-webkit-scrollbar{
+        width: 4px;
+    }
+    &::-webkit-scrollbar-track{
+        width: 8px;
+        background: $br-color2;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: $blue;
+        border-radius: 2px;
+    }
+}
+
+.wrap{
+    overflow: hidden;
+    .inner{
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1380px;
+    }
+    .innerW{
+        position: relative;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 100px 110px;
+    }
+    .innerBg{
+        position: relative;
+        width: 100%;
+        padding: 100px 0;
+        &.bg_gray{
+            background: $bg-color;
+        }
+    }
+    .innerS{
+        position: relative;
+        width: 100%;
+        max-width: 1380px;
+        margin: 0 auto;
+        padding: 0 80px;
+        z-index: 1;
+    }
+    @include laptop{
+        .inner{
+            width: 100%;
+            padding: 0 30px;
+        }
+        .innerW{
+            padding: 100px 6%;
+        }
+        .innerS{
+            padding: 0 6%;
+        }
+    }
+    @include tablet{
+        .innerW{
+            padding: 100px 30px;
+        }
+        .innerS{
+            padding: 0 60px;
+        }
+    }
+    @include mobile{
+        .inner{
+            padding: 0 20px;
+        }
+        .innerW{
+            padding: 63px 20px;
+        }
+        .innerBg{
+            padding: 60px 0;
+        }
+        .innerS{
+            padding: 0 20px;
+        }
+    }
+}
+.wrapBg{
+    display: none;
+    transition: .5s;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1500;
+}
+.header{
+    width: 100%;
+    height: 130px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1005;
+    transition: .5s;
+    &.changed{
+        background: rgba(#030A1A, .88);
+        transition: .5s;
+    }
+    .topLinkWrap{
+        width: 100%;
+        height: 35px;
+        border-bottom: 1px solid rgba(#fff, .5);
+        background: transparent;
+        ul{
+            @include flex;
+        }
+        li{
+            position: relative;
+            line-height: 34px;
+            &:not(:first-child){
+                padding-left: 15px;
+            }
+            &:not(:last-child){
+                padding-right: 15px;
+                &:after{
+                    @include shape($top: calc(50% - 8px), $right: 0, $bg: #fff, $w: 1px, $h: 16px);
+                }
+            }
+            a{
+                display: inline-block;
+                color: #fff;
+                font-size: 14px;
+                line-height: 34px;
+                vertical-align: top;
+            }
+        }
+    }
+    .gnbWrap{
+        width: 100%;
+        height: 95px;
+        text-align: center;
+        background: transparent;
+        h1 a{
+            display: inline-block;
+            width: 177px;
+            height: 50px;
+            background: url(../img/common/logo.svg) no-repeat 0 0;
+            margin-top: 20px;
+            font-size: 0;
+            color: transparent;
+        }
+        .navBtn{
+            position: absolute;
+            top: 34px;
+            right: 0;
+            width: 30px;
+            height: 28px;
+            z-index: 1001;
+            a{
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                .m_line{
+                    position: absolute;
+                    width: 100%;
+                    height: 4px;
+                    background: #FFF;
+                    transition: all 0.4s;
+                    &.line_top{
+                        top: 0;
+                    }
+                    &.line_mid{
+                        top: 12px;
+                    }
+                    &.line_bot{
+                        bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+    @include laptop{
+        .gnbWrap{
+            .navBtn{
+                right: 30px;
+            }
+        }
+    }
+    @include tablet{
+        height: 84px;
+        border-bottom: 1px solid rgba(#fff, .3);
+        &.changed{
+            border: 0;
+        }
+        .topLinkWrap{
+            display: none;
+        }
+        .gnbWrap{
+            height: 84px;
+            top: 0;
+            h1 a{
+                width: 135px;
+                height: 39px;
+                background-size: 135px auto;
+                margin-top: 22px;
+            }
+            .navBtn{
+                top: 28px;
+            }
+        }
+    }
+    @include mobile{
+        height: 60px;
+        .gnbWrap{
+            height: 60px;
+            h1 a{
+                width: 93px;
+                height: 27px;
+                background-size: 93px auto;
+                margin-top: 16px;
+            }
+            .navBtn{
+                top: 18px;
+                right: 20px;
+                width: 24px;
+                height: 24px;
+                a{
+                    .m_line{
+                        height: 3px;
+                        &.line_mid{
+                            top: 10px;
+                        }
+                    }
+                }
+                &.on a .m_line{
+                    &.line_top, &.line_bot{
+                        top: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+.navWrap{
+    position: fixed;
+    top: 0;
+    right: -360px;
+    background: #fff;
+    height: 100vh;
+    min-height: 815px;
+    transition: .5s;
+    padding: 0 20px;
+    &.on{
+        transition: .5s;
+        width: 360px;
+        right: 0;
+        z-index: 2000;
+    }
+    .navInner{
+        width: calc(100% - 40px);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .nav{
+        margin-bottom: 12vh;
+        text-align: left;
+        a{
+            @include eng($family: 'Cormorant Garamond');
+            display: block;
+            width: 100%;
+            color: $txt-black;
+            font-size: 32px;
+            line-height: 72px;
+            letter-spacing: 0.04em;
+            font-weight: 700;
+            padding: 0 20px;
+            &:hover{
+                background: $blue;
+                color: #fff;
+            }
+            &:focus{
+                background: $blue;
+                color: #fff;
+            }
+        }
+    }
+    .btmLink{
+        padding: 0 10px;
+        ul{
+            width: 100%;
+            @include flex($ju: center);
+            li{
+                position: relative;
+                &:not(:first-child){
+                    padding-left: 20px;
+                }
+                &:not(:last-child){
+                    padding-right: 20px;
+                    &:after{
+                        @include shape($w: 1px, $h: 18px, $top: 0, $right: 0, $bg: $br-color);
+                    }
+                }
+                a{
+                    display: block;
+                    font-size: 18px;
+                    line-height: 18px;
+                    &:hover{
+                        color: $blue;
+                    }
+                }
+            }
+        }
+    }
+    h2{
+        text-align: center;
+        border-top: 1px solid $br-color;
+        border-bottom: 1px solid $br-color;
+        margin: 27px 10px 0 10px;
+        padding: 44px 0;
+        a{
+            display: inline-block;
+            width: 196px;
+            height: 56px;
+            background: url(../img/common/nav-logo.svg) no-repeat 0 0;
+            font-size: 0;
+            color: transparent;
+        }
+    }
+    .navBtn{
+        @include pos($top: 6%, $left: 20px);
+        width: 40px;
+        height: 40px;
+        z-index: 10001;
+        cursor: pointer;
+        a{
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            .m_line{
+                @include pos($top: 15px);
+                @include btn-x($bg: #111, $h: 4px);
+                transition: all 0.4s;
+            }
+        }
+    }
+    @include tablet{
+        min-height: 730px;
+        right: -50%;
+        &.on{
+            width: 50%;
+        }
+        .navBtn{
+            left: 30px;
+            top: 30px;
+        }
+        .btmLink{
+            ul li{
+                &:not(:first-child){
+                    padding-left: 23px;
+                }
+                &:not(:last-child){
+                    padding-right: 23px;
+                }
+            }
+        }
+    }
+    @include mobile{
+        padding: 0 15px;
+        right: -250px;
+        min-height: 500px;
+        &.on{
+            width: 250px;
+        }
+        .navInner{
+            width: calc(100% - 30px);
+        }
+        .nav{
+            a{  
+                font-size: 19px;
+                line-height: 50px;
+                padding: 0 15px;
+                transition: none;
+            }
+        }
+        .btmLink{
+            ul li{
+                &:not(:first-child){
+                    padding-left: 15px;
+                }
+                &:not(:last-child){
+                    padding-right: 15px;
+                    &:after{
+                        height: 13px;
+                    }
+                }
+                a{
+                    font-size: 12px;
+                }
+            }
+        }
+        h2{
+            padding: 30px 25px;
+            margin: 8px 10px 0 10px;
+            a{
+                width: 129px;
+                height: 37px;
+                background-size: 129px auto;
+            }
+        }
+        .navBtn{
+            top: 13px;
+            left: 16px;
+            width: 32px;
+            height: 32px;
+            a .m_line{
+                height: 3px;
+            }
+        }
+    }
+}
+
+.footer{
+    background: $txt-black;
+    .footCon{
+        position: relative;
+        padding: 60px 0;
+        @include flex($ju: space-between);
+        *{
+            color: $txt-base;
+            font-size: 15px;
+        }
+        .footLink{
+            margin-top: 3px;
+            ul{
+                @include flex;
+                li{
+                    position: relative;
+                    height: 15px;
+                    line-height: 15px;
+                    a{
+                        display: inline-block;
+                        line-height: 15px;
+                    }
+                    &:not(:first-child){
+                        padding-left: 15px;
+                    }
+                    &:not(:last-child){
+                        padding-right: 15px;
+                        &:after{
+                            @include shape($w: 1px, $h: 15px, $bg: rgba($txt-base, .5), $top: 2px, $right: 0);
+                        }
+                    }
+                }
+            }
+        }
+        .foot-tab{
+            display: none;
+        }
+        copyright{
+            text-transform: uppercase;
+        }
+    }
+    @include tablet{
+        .footCon{
+            .footLink{
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            copyright{
+                width: 100%;
+            }
+            .foot-tab{
+                display: block;
+                @include pos($top: 58px, $right: 0);
+                a{
+                    position: relative;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #fff;
+                    &:not(:first-child){
+                        padding-left: 15px;
+                        &:before{
+                            @include shape($w: 1px, $h: 15px, $bg: rgba(#fff, .5), $left: 0, $top: 4px);
+                        }
+                    }
+                    &:not(:last-child){
+                        padding-right: 15px;
+                    }
+                }
+            }
+        }
+    }
+    @include mobile{
+        .footCon{
+            padding: 35px 0 30px 0;
+            *{
+                font-size: 12px;
+            }
+            .footLink{
+                text-align: center;
+                margin-bottom: 15px;
+                display: block;
+                ul{
+                    justify-content: center;
+                    li{
+                        &:not(:first-child){
+                            padding-left: 12px;
+                        }
+                        &:not(:last-child){
+                            padding-right: 12px;
+                            &:after{
+                                height: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+            copyright{
+                text-align: center;
+            }
+            .foot-tab{
+                display: none;
+            }
+        }
+    }
+}
+
+//layerBox
+.pop_bg {
+    position:fixed;
+    display:none;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    z-index:101110;
+    background: rgba(#000, .6);
+    transition: .5s;
+}
+.layerBox {
+    position:fixed;
+    display: none;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto auto;
+    padding: 25px 30px;
+    background:#fff;
+    z-index:1001111;
+    .popTit{
+        font-size: 30px;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .outline{
+        border: 1px solid $br-color2;
+        padding: 30px;
+        overflow-y: auto;
+        height: 475px;
+        p{
+            white-space: pre-line;
+            color: $txt-gray;
+            line-height: 24px;
+            &:not(:last-child){
+                margin-bottom: 60px;
+            }
+            &.bTit{
+                margin-bottom: 10px;
+                b{
+                    color: $txt-black;
+                    font-size: 20px;
+                }
+            }
+            &.mTit{
+                margin-bottom: 5px;
+                b{
+                    color: $txt-black;
+                    font-size: 20px;
+                }
+            }
+            &.sTit{
+                margin-bottom: 5px;
+            }
+            b{
+                font-weight: 500;
+            }
+            a{
+                color: $blue;
+                text-decoration: underline;
+            }
+        }
+    }
+    .layer_btnClose {
+        @include pos($right: 35px, $top: -35px);
+        width: 70px;
+        height: 70px;
+        background: $blue;
+        .m_line{
+            @include pos($top: 34px, $left: 17px);
+            @include btn-x($bg: #fff, $h: 2px);
+            width: 37px;
+        }
+
+    }
+    @include tablet{
+        .outline{
+            p{
+                &:not(:last-child){
+                    margin-bottom: 40px;
+                }
+            }
+        }
+    }
+    @include mobile{
+        padding: 20px 15px;
+        .popTit{
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .outline{
+            padding: 15px;
+            p{
+                line-height: 21px;
+                &:not(:last-child){
+                    margin-bottom: 30px;
+                }
+                &.bTit{
+                    margin-bottom: 10px;
+                    b{
+                        font-size: 16px;
+                    }
+                }
+                &.mTit{
+                    margin-bottom: 5px;
+                    b{
+                        font-size: 16px;
+                    }
+                }
+                &.sTit{
+                    margin-bottom: 5px;
+                }
+            }
+        }
+        .layer_btnClose {
+            @include pos($right: unset, $left: calc(50% - 24px), $top: unset, $bottom: -58px);
+            width: 48px;
+            height: 48px;
+            .m_line{
+                top: 23px;
+                left: 11px;
+                width: 26px;
+            }
+    
+        }
+    }
+}
+.layerPrivacy{
+    width:970px;
+    max-width:970px;
+    height:610px;
+    max-height:610px;
+    .outline{
+        height: 475px;
+    }
+    @media screen and (max-width: 1030px) {
+        width: calc(100% - 60px);
+        max-width: unset;
+	}
+    @include mobile{
+        height: 520px;
+        max-height: 520px;
+        .outline{
+            height:430px;
+            max-height:430px;
+        }
+    }
+}
+.layerNotice{
+    width:670px;
+    max-width:670px;
+    height: 410px;
+    .outline{
+        height: 275px;
+        p{
+            &:not(:last-child){
+                margin-bottom: 40px;
+            }
+            &.bTit{
+                margin-bottom: 40px;
+            }
+        }
+    }
+    @include tablet{
+        width: calc(100% - 60px);
+        max-width: unset;
+    }
+    @include mobile{
+        height: 390px;
+        max-height: 390px;
+        .outline{
+            height:302px;
+            max-height:302px;
+        }
+    }
+}
+.layerWeb{
+    width:670px;
+    max-width:670px;
+    height: 456px;
+    .outline{
+        height: 320px;
+        p{
+            &:not(:last-child){
+                margin-bottom: 40px;
+            }
+            &.bTit{
+                margin-bottom: 40px;
+            }
+        }
+    }
+    @include tablet{
+        width: calc(100% - 60px);
+        max-width: unset;
+    }
+    @include mobile{
+        height: 433px;
+        max-height: 433px;
+        .outline{
+            height:344px;
+            max-height:344px;
+        }
+    }
+}
+/* 공유하기 pop */
+.layerShare {
+    position: fixed;
+    display: none;
+    width: 676px;
+    max-width: calc(100% - 120px);
+    height: 440px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto auto;
+    padding: 0;
+    background: #fff;
+    z-index:1001111;
+    .popTit{
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+        border-bottom: 1px solid $br-color2;
+        padding: 30px 0;
+    }
+    .layer_btnClose{
+        @include pos($top: 38px, $right: 34px);
+        width: 40px;
+        height: 40px;
+        .m_line{
+            @include pos($top: 14px, $left: 0);
+            @include btn-x($bg: $txt-black, $h: 3px);
+        }
+    }
+    ul{
+        margin-top: 100px;
+        @include flex($ju: center);
+        li{
+            width: 98px;
+            &:not(:last-child){
+                margin-right: 28px;
+            }
+            a{
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            dd{
+                font-size: 18px;
+                color: $txt-gray;
+                margin-top: 9px;
+            }
+        }
+    }
+    @include tablet{
+        ul{
+            li{
+                &:not(:last-child){
+                    margin-right: 18px;
+                }
+            }
+        }
+
+    }
+    @include mobile{
+        max-width: 72%;
+        height: 393px;
+        .popTit{
+            font-size: 20px;
+        }
+        .layer_btnClose{
+            @include pos($top: 30px, $right: 11%);
+            width: 26px;
+            height: 26px;
+        }
+        ul{
+            width: 170px;
+            margin: 40px auto;
+            li{
+                width: 75px;
+                max-width: 75px;
+                margin-bottom: 20px;
+                &:not(:last-child){
+                    margin-right: 0;
+                }
+                &:first-child,&:nth-child(3){
+                    margin-right: 20px;
+                }
+                dd{
+                    font-size: 13px;
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+}

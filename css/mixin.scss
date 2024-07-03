@@ -1,0 +1,237 @@
+@function rem($size){
+    $remSize : $size / $font-baseSize;
+    @return #{$remSize}rem;
+}
+@mixin font-size($size){
+    font-size: $size;
+    font-size: rem($size);
+}
+
+$txt-black: #26282B;
+$txt-base: #9D9FA2;
+$dark-blue: #001E4A;
+$blue: #015eaa;
+$deep-blue: #045495;
+$br-color: #E4E8EE;
+$br-color2: #CBD4E1;
+$bg-color: #f7f7f7;
+$txt-gray: #6F7175;
+
+$screen-sm-min : 640px; //mobile
+$screen-sm-min2 : 480px;  //mobile_2
+$screen-md-min : 768px;  //tablet
+$screen-lg-min : 1440px;  //labtop
+$screen-lg-min2 : 1220px;  //labtop_s
+
+$font-baseSize: 16px;
+
+
+@mixin laptop {
+	@media screen and (max-width: $screen-lg-min) {
+		@content;
+	}
+}
+@mixin laptop_s {
+	@media screen and (max-width: $screen-lg-min2) {
+		@content;
+	}
+}
+@mixin tablet {
+	@media screen and (max-width: $screen-md-min) {
+		@content;
+	}
+}
+@mixin mobile {
+	@media screen and (max-width: $screen-sm-min) {
+		@content;
+	}
+}
+@mixin mobile_s {
+	@media screen and (max-width: $screen-sm-min2) {
+		@content;
+	}
+}
+@mixin eng($family: null){
+	font-family: $family;
+	letter-spacing: 0;
+}
+@mixin shape($top: null, $bottom: null, $left: null, $right: null, $bg: null, $w: null, $h: null){
+	content: '';
+	display: inline-block;
+	position: absolute;
+	top: $top;
+	bottom: $bottom;
+	left: $left;
+	right: $right;
+	background: $bg;
+	width: $w;
+	height: $h;
+}
+@mixin flex($ju: null){
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: $ju;
+}
+@mixin flex-inner($w: null, $self: null){
+	width: $w;
+	align-self: $self;
+}
+@mixin pos($top: null, $bottom: null, $left: null, $right: null){
+	position: absolute;
+	top: $top;
+	bottom: $bottom;
+	left: $left;
+	right: $right;
+}
+@mixin clear{
+	content: '';
+	display: block;
+	clear: both;
+}
+// ratio
+@function vw($target, $vw: 1350) {
+    $vw-context: ($vw*.01) * 1px;
+    @return ($target/$vw-context) * 1vw;
+}
+@function vh($target, $vh: 1080) {
+    $vh-context: ($vh*.01) * 1px;
+    @return ($target/$vh-context) * 1vh;
+}
+@function per($target, $parent: 1350) {
+    @return percentage($target / $parent);
+}
+
+/* style mixin */
+@mixin btn-plus{
+	display: block;
+	width: 48px;
+	height: 48px;
+	background: #F1F4F9;
+	transition: .5s;
+	.line{
+		@include pos($top: 14px, $left: 23px);
+		width: 2px;
+		height: 18px;
+		background: $blue;
+		&:last-child{
+			-webkit-transform: rotate(90deg);
+			-ms-transform: rotate(90deg);
+			-o-transform: rotate(90deg);
+			-moz-transform: rotate(90deg);
+			transform: rotate(90deg);
+		}
+	}
+	&:hover{
+		background: $blue;
+		.line{
+			background: #fff;
+		}
+	}
+	@include mobile{
+		width: 40px;
+		height: 40px;
+		.line{
+			@include pos($top: 12px, $left: 19px);
+			height: 16px;
+		}
+	}
+}
+@mixin btn-viewMore($bg: null, $br: null, $cor: null){
+	position: relative;
+	display: inline-block;
+	font-size: 16px;
+	width: 142px;
+	height: 48px;
+	line-height: 48px;
+	background: $bg;
+	border: 1px solid $br;
+	color: $cor;
+}
+@mixin btn-x($bg: null, $h: null){
+	background: $bg;
+	width: 100%;
+	height: $h;
+	&.line_top{
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+	&.line_bot{
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		transform: rotate(-45deg);
+	}
+}
+@mixin bg-fix{
+	background-size: cover;
+    background-attachment: fixed;
+}
+@mixin arrow-bottom($w: null, $h: null, $mt: null, $br: null, $cr: null, $top: null, $bottom: null, $left: null, $right: null){
+	content: '';
+	display: inline-block;
+	width: $w;
+	height: $h;
+	transform: rotate(45deg) translateY(-50%);
+	transition: all 0.35s ease-out;
+	transform-origin: 50% 0;
+	border-bottom: $br solid $cr;
+	border-right: $br solid $cr;
+	margin-top: $mt;
+	position: absolute;
+	top: $top;
+	bottom: $bottom;
+	left: $left;
+	right: $right;
+}
+@mixin arrow-bottom-on($mt: null){
+	margin-top: $mt;
+	transform: rotate(-135deg) translateY(-50%);
+}
+@mixin arrow-right($w: null, $h: null, $mt: null, $br: null, $cr: null, $left: null, $right: null){
+	content: '';
+	display: inline-block;
+	width: $w;
+	height: $h;
+	transform: rotate(-45deg) translateY(-50%);
+	transition: all 0.35s ease-out;
+	transform-origin: 50% 0;
+	border-bottom: $br solid $cr;
+	border-right: $br solid $cr;
+	margin-top: $mt;
+	position: absolute;
+	top: 50%;
+	left: $left;
+	right: $right;
+}
+@mixin ovBg_w($bg: null, $cr: null){
+	z-index: 1;
+	&:before{
+		@include shape($top: -1px, $left: -1px, $w: 0, $h: calc(100% + 2px));
+		background: $bg;
+		transition: .5s;
+		z-index: -1;
+	}
+	&:hover{
+		color: $cr;
+		&:before{
+			@include aniWidth($w: calc(100% + 2px), $du: 1s);
+		}
+	}
+	&:focus{
+		color: $cr;
+		&:before{
+			width: calc(100% + 2px);
+		}
+	}
+}
+
+/* animation mixin */
+@mixin aniWidth($w: width, $du: transition-duration){
+	width: $w;
+	transition-duration: $du;
+	transition-property: width;
+}

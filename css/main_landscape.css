@@ -1,0 +1,54 @@
+/* style mixin */
+/* animation mixin */
+@media screen and (max-width: 1220px) {
+  .mainVisualWrap .logo {
+    top: 35vh;
+  }
+  .mainVisualWrap .visual-scroll {
+    bottom: 5%;
+  }
+  .mainVisualWrap .slick-slider-dots {
+    bottom: 25vh;
+  }
+}
+@media screen and (max-width: 768px) {
+  .mainVisualWrap .logo {
+    background-size: 332px 92px;
+    width: 332px;
+    height: 92px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .mainVisualWrap .logo {
+    background-size: 184px auto;
+    width: 184px;
+    height: 51px;
+    top: 38%;
+  }
+  .mainVisualWrap .visual-scroll {
+    bottom: 10%;
+    padding-top: 37px;
+    font-size: 10px;
+    background: url(../img/main/visual-scroll-arrow-mo.png) no-repeat center 0;
+  }
+  .mainVisualWrap .slick-slider-dots {
+    bottom: 35%;
+  }
+}
+@media screen and (max-height: 350px) {
+  .mainVisualWrap .logo {
+    background-size: 184px auto;
+    width: 184px;
+    height: 51px;
+    top: 38%;
+  }
+  .mainVisualWrap .visual-scroll {
+    bottom: 10%;
+    padding-top: 37px;
+    font-size: 10px;
+    background: url(../img/main/visual-scroll-arrow-mo.png) no-repeat center 0;
+  }
+  .mainVisualWrap .slick-slider-dots {
+    bottom: 35%;
+  }
+}
